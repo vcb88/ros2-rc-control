@@ -27,7 +27,7 @@ A ROS 2 package designed to interface Radio Control (RC) receivers with ROS 2 ba
 ### ROS 2 Dependencies
 *   `rclpy`
 *   `std_msgs`
-*   **`hexapod_msgs`**: This package relies on a custom message type `RCCommand`. You must have the `hexapod_msgs` package built in your workspace.
+*   **`hexapod_msgs`**: Included in this repository.
 
 ### Python Dependencies
 ```bash
@@ -38,17 +38,17 @@ pip3 install RPi.GPIO pyserial numpy
 
 1.  **Clone the repository:**
     ```bash
+    mkdir -p ~/ros2_ws/src
     cd ~/ros2_ws/src
     git clone https://github.com/vcb88/ros2-rc-control.git
     ```
 
-2.  **Fix Package Name (Important):**
-    The current `setup.py` incorrectly names the package `hexapod_robot`. You may need to rename it to `rc-control` to match `package.xml` before building.
+2.  **Build the workspace:**
+    Since this repository contains multiple packages (`rc-control` and `hexapod_msgs`), build the entire workspace or select both.
 
-3.  **Build the package:**
     ```bash
     cd ~/ros2_ws
-    colcon build --packages-select rc-control
+    colcon build
     source install/setup.bash
     ```
 
@@ -80,10 +80,6 @@ Parameters can be modified in `rc-control/controller_config.py` or passed via la
 | **Left Stick X/Y** | Movement / Height / Stride |
 | **Switch SE** | Emergency Stop |
 | **Potentiometer S1**| Speed Limiter |
-
-## ⚠️ Known Issues
-*   The `setup.py` file currently lists the package name as `hexapod_robot`, which conflicts with `package.xml` (`rc-control`).
-*   Depends on external `hexapod_msgs` which are not included in this repo.
 
 ## 📄 License
 Apache License 2.0
