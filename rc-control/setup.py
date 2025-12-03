@@ -3,7 +3,7 @@ import os
 from glob import glob
 from setuptools import setup
 
-package_name = 'hexapod_robot'
+package_name = 'rc_control'
 
 setup(
     name=package_name,
@@ -31,11 +31,11 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'servo_driver_node = hexapod_robot.servo_driver_node:main',
-            'ppm_controller_node = hexapod_robot.ppm_controller_node:main',
-            'sbus_controller_node = hexapod_robot.sbus_controller_node:main',
-            'keyboard_controller = hexapod_robot.keyboard_controller:main',
-            'joystick_controller = hexapod_robot.joystick_controller:main',
+            # 'servo_driver_node = rc_control.servo_driver_node:main', # File missing
+            'ppm_controller_node = rc_control.ppm_controller_node:main',
+            'sbus_controller_node = rc_control.sbus_controller_node:main',
+            'keyboard_controller = rc_control.keyboard_controller:main',
+            'joystick_controller = rc_control.joystick_controller:main',
         ],
     },
     python_requires='>=3.8',
